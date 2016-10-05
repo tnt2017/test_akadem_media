@@ -1,4 +1,4 @@
-<?
+п»ї<?
 
   function cmp($a, $b)  
   { 
@@ -13,7 +13,7 @@ class MyTable
   public function read_json($fname)
   {
     $json = file_get_contents($fname);
-    $this->json = json_decode($json, true); // преобразование строки в формате json в ассоциативный массив 
+    $this->json = json_decode($json, true); // РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ СЃС‚СЂРѕРєРё РІ С„РѕСЂРјР°С‚Рµ json РІ Р°СЃСЃРѕС†РёР°С‚РёРІРЅС‹Р№ РјР°СЃСЃРёРІ 
   }
 
   function convert_table($events)
@@ -122,7 +122,7 @@ function read_table_from_db($p1)
 
 	$connect = mysql_connect($Host, $User, $Password);
 	if (!$connect) {
-    	echo 'Ошибка подключения к mysql';
+    	echo 'РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє mysql';
     	exit;
 	}
  
@@ -132,7 +132,7 @@ function read_table_from_db($p1)
 	$result = mysql_list_tables($DBName);
  
 	if (!$result) {
-    	echo "Ошибка базы, не удалось получить список таблиц\n";
+    	echo "РћС€РёР±РєР° Р±Р°Р·С‹, РЅРµ СѓРґР°Р»РѕСЃСЊ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє С‚Р°Р±Р»РёС†\n";
     	exit;
 	}
  

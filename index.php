@@ -1,4 +1,4 @@
-<html>
+ï»¿<html>
 <body>
 
 <head>
@@ -16,25 +16,25 @@
   if($_POST[tab_name]!="")
   {  
      $MyTab=new MyTable('');
-     $MyTab->read_table_from_db($_POST[tab_name]); // áåðåì òàáëèöó èç áàçû äàííûõ
+     $MyTab->read_table_from_db($_POST[tab_name]); // Ð±ÐµÑ€ÐµÐ¼ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñƒ Ð¸Ð· Ð±Ð°Ð·Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ñ…
      $MyTab->sort();
      $MyTab->print_table_header();
      $MyTab->print_table_content();
   }
   else  
   {
-     $MyTab=new MyTable('application.json'); // áåðåì òàáëèöó èç json ôàéëà
+     $MyTab=new MyTable('application.json'); // Ð±ÐµÑ€ÐµÐ¼ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñƒ Ð¸Ð· json Ñ„Ð°Ð¹Ð»Ð°
      $MyTab->sort();
      $MyTab->print_table_header();
      $MyTab->print_table_content();
   }
 ?>
 
-<input type="submit" id="save_btn" value="Ñôîðìèðîâàòü SQL-çàïðîñ">
+<input type="submit" id="save_btn" value="Ð¡Ñ„Ð¾Ñ€Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ SQL-Ð·Ð°Ð¿Ñ€Ð¾Ñ">
 <br><br>
 
 <textarea name="text_post" id="text_post" cols=130 rows=10></textarea><br><br>
-<input type="submit" id="post_btn" value="Âûïîëíèòü SQL-çàïðîñ" onclick="post_tobd('text_post');"><br><br>
+<input type="submit" id="post_btn" value="Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ SQL-Ð·Ð°Ð¿Ñ€Ð¾Ñ" onclick="post_tobd('text_post');"><br><br>
 <textarea name="sql_answer" id="sql_answer" cols=130 rows=10></textarea><br><br>
 
 </body>
