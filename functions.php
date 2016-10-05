@@ -1,6 +1,6 @@
 ﻿<?
 
-  function cmp($a, $b)  
+  function cmp_time_on($a, $b)  
   { 
    return strnatcmp($a["time_on"], $b["time_on"]); 
   } 
@@ -32,10 +32,8 @@ class MyTable
     return $ret;
   }
 
-
-
-function read_table_from_db($p1)
-{
+  function read_table_from_db($p1)
+  {
     include ('bdconfig.php');
     
     $Link=mysql_connect($Host,$User,$Password);
@@ -64,7 +62,10 @@ function read_table_from_db($p1)
     }
   }
 
-
+  function print_td($s,$color)
+  {
+    echo "<td style='background-color:$color'>" . $s . "</td>" . "\r\n";
+  }
 
   function print_table_header()
   {
@@ -72,13 +73,18 @@ function read_table_from_db($p1)
     $response=$this->json;
     $header=$response['application_name'] . "," . $response['country'] . "," . $response['city'] . "," . $response['app_id'];
     echo "<tr><td colspan=6><h1>$header</h1></td></tr>\r\n";
-    echo "<tr><td>Event</td><td>Timestamp</td><td>Time_on</td><td>Type</td><td>Color</td><td>Shuffle color</td></tr>\r\n\r\n";
+    echo "<tr>";
+
+    $this->print_td("Event","#FFFFFF");
+    $this->print_td("Timestamp","#FFFFFF");
+    $this->print_td("Time_on","#FFFFFF");
+    $this->print_td("Type","#FFFFFF");
+    $this->print_td("Color","#FFFFFF");
+    $this->print_td("Shuffle Color","#FFFFFF");
+    
+    echo "</tr>\r\n\r\n";
   }
 
-  function print_td($s,$color)
-  {
-    echo "<td style='background-color:$color'>" . $s . "</td>" . "\r\n";
-  }
 
   function print_tr($event)
   {
@@ -107,11 +113,10 @@ function read_table_from_db($p1)
 
   function sort()
   {
-    usort($this->my_table, "cmp"); 
-    rsort($this->my_table);
+    usort($this->my_table, "cmp_time_on"); // сортируем по полю time_on
+    rsort($this->my_table);		   // в обратную сторону
   }
 }
-
 
     function ShowTablesComboBox()
     {
