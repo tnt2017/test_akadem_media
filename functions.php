@@ -5,7 +5,6 @@
    return strnatcmp($a["time_on"], $b["time_on"]); 
   } 
 
-
 class MyTable
 {
   public $json, $my_table;
@@ -42,11 +41,11 @@ class MyTable
 
     while($Row=mysql_fetch_array ($Result)) 
     {
-	$this->my_table[$i]['event']=$Row[1];	
-	$this->my_table[$i]['timestamp']=$Row[2];
-	$this->my_table[$i]['time_on']=$Row[3];
-	$this->my_table[$i]['type']=$Row[4];
-	$this->my_table[$i]['color']=$Row[5];
+	$this->my_table[$i]['event']=$Row['event'];	
+	$this->my_table[$i]['timestamp']=$Row['timestamp'];
+	$this->my_table[$i]['time_on']=$Row['time_on'];
+	$this->my_table[$i]['type']=$Row['type'];
+	$this->my_table[$i]['color']=$Row['color'];
 	$i++;
     }
   }
@@ -141,7 +140,6 @@ class MyTable
  
 	while($row = mysql_fetch_row($result))
 	{
-
 		if($_POST[tab_name]==$row[0])
    		  echo "<option value=\"$row[0]\" selected>$row[0]</option>";
 		else

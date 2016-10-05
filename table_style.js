@@ -101,7 +101,7 @@ $('#save_btn').click(function()
        now = new Date();
        timestamp = now.getTime();
        var tab_name="tab_" + timestamp;
-       $('#text_post').append("CREATE table " + tab_name + " (id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, Event TEXT, Timestamp TEXT, Time_on TEXT, Type TEXT, Color TEXT);\r\n");
+       $('#text_post').append("CREATE table " + tab_name + " (id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, event TEXT, timestamp TEXT, time_on TEXT, type TEXT, color TEXT);\r\n");
 
        list = document.getElementById("mytable").getElementsByTagName("tr");
 
