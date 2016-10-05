@@ -107,13 +107,13 @@ $('#save_btn').click(function()
 
        for (var i=2; i<list.length; ++i)
        {
+	  var color=getHexRGBColor(list[i].getElementsByTagName("td")[3].style.backgroundColor);
+
           var q="INSERT into " + tab_name + " values(NULL,";
               q=q + "'" + list[i].getElementsByTagName("td")[0].innerHTML + "'"
               q=q + ", '" +list[i].getElementsByTagName("td")[1].innerHTML + "'"
               q=q + ", '" +list[i].getElementsByTagName("td")[2].innerHTML + "'"
               q=q + ", '" +list[i].getElementsByTagName("td")[3].innerHTML + "'"
-
-	  var color=getHexRGBColor(list[i].getElementsByTagName("td")[3].style.backgroundColor);
               q=q + ", '#" + color + "');\n";
           
 	  $('#text_post').append(q);
