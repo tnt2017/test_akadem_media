@@ -117,9 +117,9 @@ $('#save_btn').click(function()
               q=q + ", '#" + color + "');\n";
           
 	  $('#text_post').append(q);
-
        }
 
+       //alert('Таблица ' + tab_name);
        return false;
 });
  

@@ -1,6 +1,6 @@
 ﻿<html>
 <body>
-
+<title>Тестовое задание</title>
 <head>
 <script src="//yandex.st/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 <script src="table_style.js"></script>

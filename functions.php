@@ -22,8 +22,6 @@ class MyTable
     {
       $ret[$i]['event']=strtolower($ev['event']);
       $ret[$i]['timestamp']=date("Y-m-d H:i",$ev['timestamp']);
-      ///$ret[$i]['timestamp']=$ev['timestamp'];
-
       $data=json_decode($ev['data'], true);
       $ret[$i]['time_on']=$data['time_on'];
       $ret[$i]['type']=$data['type'];
@@ -149,7 +147,8 @@ class MyTable
 		else
    		  echo "<option value=\"$row[0]\" >$row[0]</option>";
 	}
-	echo '<input type="submit" value="ok"></select></form>';
+	echo '</select>&nbsp;';
+	echo '<input type="submit" value="ok"></form>';
     }
 
 ?>
