@@ -41,10 +41,12 @@ function change_color_tr(obj)
     list[num_tr].getElementsByTagName("td")[4].innerHTML=c;
 }
 
-function make_table_style()
+function make_table_style(table_name)
 {
-    list=document.getElementById("mytable").getElementsByTagName("tr");
-    for (var i=2; i< list.length; ++i)
+    //alert(table_name);
+
+    list=document.getElementById(table_name).getElementsByTagName("tr");
+    for (var i=2; i< list.length; i++)
     {
         list[i].getElementsByTagName("td")[0].innerHTML=list[i].getElementsByTagName("td")[0].innerHTML.toLowerCase(); // в столбце Event делаем нижний регистр
 

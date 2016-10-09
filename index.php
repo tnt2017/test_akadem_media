@@ -6,14 +6,14 @@
 <script src="table_style.js"></script>
 </head>
 
-<body onload="make_table_style();">
+<body onload="make_table_style('mytable');">
 
 <?
 
   include ('functions.php');
   echo "<form action='" . $_SERVER['PHP_SELF'] . "' method='post'>";
   ShowTablesComboBox("tab_name",$_POST[tab_name]);
-  echo '<input type="submit" id="changetab_btn"  value="ok"></form>';
+  echo '<input type="submit" id="changetab_btn"  value="ok"></form><br>' . "\n\n";
 
   if($_POST[tab_name]!="")
   {  
