@@ -139,15 +139,15 @@ class MyTable
     }
 
 
-    function ShowTablesComboBox()
+    function ShowTablesComboBox($name,$selected)
     {
-	echo '<select name="tab_name"  value="1">';
-
 	$result=GetMYSQLTables();
- 
+
+	echo '<select name="' . $name . '" class="' . $name . '" value="1">';
+
 	while($row = mysql_fetch_row($result))
 	{
-		if($_POST[tab_name]==$row[0])
+		if($row[0]==$selected)
    		  echo "<option value=\"$row[0]\" selected>$row[0]</option>";
 		else
    		  echo "<option value=\"$row[0]\" >$row[0]</option>";

@@ -11,11 +11,9 @@
 <?
 
   include ('functions.php');
-
   echo "<form action='" . $_SERVER['PHP_SELF'] . "' method='post'>";
-  ShowTablesComboBox();
-  echo '<input type="submit" value="ok"></form>';
-
+  ShowTablesComboBox("tab_name",$_POST[tab_name]);
+  echo '<input type="submit" id="changetab_btn"  value="ok"></form>';
 
   if($_POST[tab_name]!="")
   {  
@@ -34,11 +32,9 @@
   }
 ?>
 
-<input type="submit" id="save_btn" value="Сформировать SQL-запрос">
-<br><br>
-
+<input type="submit" id="makesql_btn" value="Сформировать SQL-запрос" onclick="make_sql_request('#text_post');"><br><br>
 <textarea name="text_post" id="text_post" cols=130 rows=10></textarea><br><br>
-<input type="submit" id="post_btn" value="Выполнить SQL-запрос" onclick="post_tobd('text_post');"><br><br>
+<input type="submit" id="postsql_btn"    value="Выполнить SQL-запрос" onclick="post_sql_tobd('#text_post');"><br><br>
 <textarea name="sql_answer" id="sql_answer" cols=130 rows=10></textarea><br><br>
 
 </body>

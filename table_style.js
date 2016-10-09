@@ -60,10 +60,39 @@ function make_table_style()
      }
 }
 
-function post_tobd(field_name)
+function make_sql_request(textarea_name)
+{
+       $(textarea_name).empty();
+       now = new Date();
+       timestamp = now.getTime();
+       var tab_name="tab_" + timestamp;
+       $(textarea_name).append("CREATE table " + tab_name + " (id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, event TEXT, timestamp TEXT, time_on TEXT, type TEXT, color TEXT);\r\n");
+
+       list = document.getElementById("mytable").getElementsByTagName("tr");
+
+       for (var i=2; i<list.length; i++)
+       {
+	  var color=getHexRGBColor(list[i].getElementsByTagName("td")[3].style.backgroundColor);
+
+          var q="INSERT into " + tab_name + " values(NULL,";
+              q=q + "'" + list[i].getElementsByTagName("td")[0].innerHTML + "'"
+              q=q + ", '" +list[i].getElementsByTagName("td")[1].innerHTML + "'"
+              q=q + ", '" +list[i].getElementsByTagName("td")[2].innerHTML + "'"
+              q=q + ", '" +list[i].getElementsByTagName("td")[3].innerHTML + "'"
+              q=q + ", '#" + color + "');\n";
+          
+	  $(textarea_name).append(q);
+       }
+
+       return false;
+}
+
+
+function post_sql_tobd(textarea_name)
 {
     var xhr = new XMLHttpRequest();
-    var text_post=document.getElementById(field_name).value;
+    var text_post=$(textarea_name).val();
+
     text_post = encodeURIComponent(text_post);
     xhr.open("POST", "bdpost.php", true)
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
@@ -93,36 +122,23 @@ function l(event)
      event.srcElement.backgroundcolor="#000000";*/
 }
 
+///////////////////////// JQUERY EVENTS //////////////////
+
+
 $(function(){
  
 $('#save_btn').click(function() 
 {
-       $('#text_post').empty();
-       now = new Date();
-       timestamp = now.getTime();
-       var tab_name="tab_" + timestamp;
-       $('#text_post').append("CREATE table " + tab_name + " (id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, event TEXT, timestamp TEXT, time_on TEXT, type TEXT, color TEXT);\r\n");
-
-       list = document.getElementById("mytable").getElementsByTagName("tr");
-
-       for (var i=2; i<list.length; i++)
-       {
-	  var color=getHexRGBColor(list[i].getElementsByTagName("td")[3].style.backgroundColor);
-
-          var q="INSERT into " + tab_name + " values(NULL,";
-              q=q + "'" + list[i].getElementsByTagName("td")[0].innerHTML + "'"
-              q=q + ", '" +list[i].getElementsByTagName("td")[1].innerHTML + "'"
-              q=q + ", '" +list[i].getElementsByTagName("td")[2].innerHTML + "'"
-              q=q + ", '" +list[i].getElementsByTagName("td")[3].innerHTML + "'"
-              q=q + ", '#" + color + "');\n";
-          
-	  $('#text_post').append(q);
-       }
-
-       //alert('Таблица ' + tab_name);
-       return false;
+ 
 });
  
+
+$( ".tab_name" ).change(function() {
+ //alert( $(this).val() );
+ $('#changetab_btn').click();
+
+});
+
 
 });
 
