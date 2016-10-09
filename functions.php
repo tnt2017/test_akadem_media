@@ -115,12 +115,10 @@ class MyTable
   }
 }
 
-    function ShowTablesComboBox()
+
+    function GetMYSQLTables()
     {
 	include ('bdconfig.php');
-	
-	echo "<form action='" . $_SERVER['PHP_SELF'] . "' method='post'>";
-	echo '<select name="tab_name"  value="1">';
 
 	$connect = mysql_connect($Host, $User, $Password);
 	if (!$connect) {
@@ -132,11 +130,20 @@ class MyTable
 	if(!$selectdb) die('Cannot select db. Error');
  
 	$result = mysql_list_tables($DBName);
- 
-	if (!$result) {
+	if (!$result) 
+	{
     	echo "Ошибка базы, не удалось получить список таблиц\n";
     	exit;
 	}
+	return $result; 
+    }
+
+
+    function ShowTablesComboBox()
+    {
+	echo '<select name="tab_name"  value="1">';
+
+	$result=GetMYSQLTables();
  
 	while($row = mysql_fetch_row($result))
 	{
@@ -146,7 +153,6 @@ class MyTable
    		  echo "<option value=\"$row[0]\" >$row[0]</option>";
 	}
 	echo '</select>&nbsp;';
-	echo '<input type="submit" value="ok"></form>';
     }
 
 ?>

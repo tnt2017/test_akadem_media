@@ -21,7 +21,7 @@ function getHexRGBColor(color)
     if(aRGB)
     {
     color = '';
-    for (var i=1;  i<=3; i++) color += Math.round((aRGB[i][aRGB[i].length-1]=="%"?2.55:1)*parseInt(aRGB[i])).toString(16).replace(/^(.)$/,'0$1');
+    for (var i=1; i<=3; i++) color += Math.round((aRGB[i][aRGB[i].length-1]=="%"?2.55:1)*parseInt(aRGB[i])).toString(16).replace(/^(.)$/,'0$1');
     }
 
     else color = color.replace(/^#?([\da-f])([\da-f])([\da-f])$/i, '$1$1$2$2$3$3');
@@ -105,7 +105,7 @@ $('#save_btn').click(function()
 
        list = document.getElementById("mytable").getElementsByTagName("tr");
 
-       for (var i=2; i<list.length; ++i)
+       for (var i=2; i<list.length; i++)
        {
 	  var color=getHexRGBColor(list[i].getElementsByTagName("td")[3].style.backgroundColor);
 

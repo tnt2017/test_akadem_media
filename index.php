@@ -11,7 +11,11 @@
 <?
 
   include ('functions.php');
+
+  echo "<form action='" . $_SERVER['PHP_SELF'] . "' method='post'>";
   ShowTablesComboBox();
+  echo '<input type="submit" value="ok"></form>';
+
 
   if($_POST[tab_name]!="")
   {  
