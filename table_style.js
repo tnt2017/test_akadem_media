@@ -90,10 +90,10 @@ function make_sql_request(textarea_name)
 }
 
 
-function post_sql_tobd(textarea_name, textarea_name2)
+function post_sql_tobd(textarea1, textarea2)
 {
     var xhr = new XMLHttpRequest();
-    var text_post=$(textarea_name).val();
+    var text_post=$(textarea1).val();
 
     text_post = encodeURIComponent(text_post);
     xhr.open("POST", "bdpost.php", true)
@@ -104,8 +104,8 @@ function post_sql_tobd(textarea_name, textarea_name2)
 
     if(xhr.readyState == 4)
     {
- 	 $(textarea_name2).empty();
-	 $(textarea_name2).append(xhr.responseText);
+ 	 $(textarea2).empty();
+	 $(textarea2).append(xhr.responseText);
          xhr.result_cat;
     }
     }
