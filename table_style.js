@@ -90,7 +90,7 @@ function make_sql_request(textarea_name)
 }
 
 
-function post_sql_tobd(textarea_name)
+function post_sql_tobd(textarea_name, textarea_name2)
 {
     var xhr = new XMLHttpRequest();
     var text_post=$(textarea_name).val();
@@ -104,10 +104,8 @@ function post_sql_tobd(textarea_name)
 
     if(xhr.readyState == 4)
     {
-        //alert(xhr.responseText);
-         document.getElementById("sql_answer").value=xhr.responseText;
- 	 $('#sql_answer').empty();
-	 $('#sql_answer').append(xhr.responseText);
+ 	 $(textarea_name2).empty();
+	 $(textarea_name2).append(xhr.responseText);
          xhr.result_cat;
     }
     }

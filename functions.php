@@ -64,9 +64,9 @@ class MyTable
     echo "<td style='background-color:$color'>" . $s . "</td>" . "\r\n";
   }
 
-  function print_table_header()
+  function print_table_header($tab_name)
   {
-    echo "<table id=\"mytable\" border=1  onclick=\"l(event)\">\r\n";
+    echo "<table id=\"$tab_name\" border=1  onclick=\"l(event)\">\r\n";
     $response=$this->json;
     $header=$response['application_name'] . "," . $response['country'] . "," . $response['city'] . "," . $response['app_id'];
     echo "<tr><td colspan=6><h1>$header</h1></td></tr>\r\n";
@@ -108,9 +108,9 @@ class MyTable
     echo "</table><br>";
   }
 
-  function sort()
+  function sort($sort_func)
   {
-    usort($this->my_table, "cmp_time_on"); // сортируем по полю time_on
+    usort($this->my_table, $sort_func); // сортируем по полю time_on
     rsort($this->my_table);		   // в обратную сторону
   }
 }
@@ -143,16 +143,16 @@ class MyTable
     {
 	$result=GetMYSQLTables();
 
-	echo '<select name="' . $name . '" class="' . $name . '" value="1">';
+	echo '<select name="' . $name . '" class="' . $name . '" value="1">' . "\n";
 
 	while($row = mysql_fetch_row($result))
 	{
 		if($row[0]==$selected)
-   		  echo "<option value=\"$row[0]\" selected>$row[0]</option>";
+   		  echo "<option value=\"$row[0]\" selected>$row[0]</option>\n";
 		else
-   		  echo "<option value=\"$row[0]\" >$row[0]</option>";
+   		  echo "<option value=\"$row[0]\" >$row[0]</option>\n";
 	}
-	echo '</select>&nbsp;';
+	echo "</select>&nbsp;\n";
     }
 
 ?>
